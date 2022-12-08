@@ -15,20 +15,24 @@ class Customer(models.Model):
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, primary_key=True)
     phone_number = models.CharField(max_length=10)
-    location = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.user
+        return self.user.first_name
 
 
 class Business_owner(models.Model):
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, primary_key=True)
     phone_number = models.CharField(max_length=10)
-    location = models.CharField(max_length=100)
+    business_type = models.CharField(max_length=40, null=True)
+    city = models.CharField(max_length=200, null=True)
+    district = models.CharField(max_length=200, null=True)
+    sector = models.CharField(max_length=200, null=True)
+    latitude = models.FloatField(default=0, null=True)
+    longitude = models.FloatField(default=0, null=True)
 
     def __str__(self):
-        return self.user
+        return self.user.first_name
 
 
 class status(models.Model):
